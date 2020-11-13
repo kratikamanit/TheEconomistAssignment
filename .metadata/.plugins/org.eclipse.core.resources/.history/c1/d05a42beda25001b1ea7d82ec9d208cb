@@ -1,0 +1,22 @@
+package assignment;
+
+public class Login {	
+	
+	public static void main(String[] args) throws InterruptedException  {
+		InitializeDriver.initDriver();
+		CommonWebFun cwf = new CommonWebFun();
+		PageObjects po = new PageObjects();
+		
+		String baseURL = "https://www.facebook.com/";
+		String username = "Kratika";
+		String password = "abc123";
+	
+		cwf.launch(baseURL);
+		
+		cwf.entertext(po.readproperty("Objectrepo.properties", "usernameTB"),username);
+		cwf.entertext(po.readproperty("Objectrepo.properties", "pwdTB"),password);
+		cwf.click(po.readproperty("Objectrepo.properties", "loginBTN"));
+		System.out.println("Hello World");
+		cwf.closeDriver();
+	}	
+}

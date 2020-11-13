@@ -1,0 +1,77 @@
+package assignment;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+public class ReviewScenario {
+
+	public static void main(String[] args) {
+		InitializeDriver.initDriver();
+		CommonWebFun cwf = new CommonWebFun();
+		PageObjects po = new PageObjects();
+		
+		Logger log = LogManager.getLogger(ReviewScenario.class.getName());
+		
+		BasicConfigurator.configure();
+		
+		String baseURL = "https://jobs.economist.com/";		
+		cwf.launch(baseURL);
+				
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "primary_logo"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "nav_bar"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "search_fields_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sector_lists_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "jobs_blog_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "featured_jobs_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "footer_section"));
+		
+		log.info(" The Economist | Jobs page is loading successfully with all the components ");
+		
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "sign_in_link"));
+		cwf.verifyTitle("Logon | Jobs.Economist.com");
+		cwf.verifyCurrentURL("https://jobs.economist.com/logon/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_label"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_button"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_createacc_label"));
+		log.info(" Successfully navigated to Sign in Page ");
+		cwf.click(po.readproperty("Objectrepo.properties", "home_tab"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "search_fields_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sector_lists_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "jobs_blog_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "featured_jobs_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "footer_section"));
+		log.info(" Successfully navigated back to Home Page ");
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "create_acc_link"));
+		cwf.verifyTitle("Register | Jobs.Economist.com");
+		cwf.verifyCurrentURL("https://jobs.economist.com/register/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_label"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_button"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_createacc_label"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "create_acc_page_block"));
+		log.info(" Successfully navigated to Create Account Page ");
+		cwf.click(po.readproperty("Objectrepo.properties", "home_tab"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "search_fields_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sector_lists_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "jobs_blog_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "featured_jobs_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "footer_section"));
+		log.info(" Successfully navigated back to Home Page ");
+		
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "find_job_tab"));
+		cwf.verifyTitle(" Browse jobs | Jobs.Economist.com ");
+		cwf.verifyCurrentURL("https://jobs.economist.com/jobs/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_label"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_button"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_createacc_label"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "create_acc_page_block"));
+		log.info(" Successfully navigated to Create Account Page ");
+
+		
+		cwf.closeDriver();
+	}
+
+}

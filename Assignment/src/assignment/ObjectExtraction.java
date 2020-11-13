@@ -1,0 +1,27 @@
+package assignment;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+public class ObjectExtraction {
+	
+	public String readproperty(String propertyFileName, String property ) {
+		try(InputStream input = new FileInputStream("resources/" + propertyFileName )){
+			Properties properties = new Properties();
+			properties.load(input);
+			System.out.println("Properties are read from file " + property + "= " + properties.getProperty(property));
+			return properties.getProperty(property);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return null;		
+	}
+
+}

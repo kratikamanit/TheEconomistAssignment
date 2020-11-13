@@ -1,0 +1,99 @@
+package assignment;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.*;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.junit.Assert;
+
+
+public class CommonWebFun {	
+	
+	WebDriverWait wait=new WebDriverWait(InitializeDriver.driver, 20);	
+	Logger log = LogManager.getLogger(CommonWebFun.class.getName());
+	
+	
+	public void launch(String URL) {
+		InitializeDriver.driver.get(URL);		
+		log.info("Launched URL : " + URL);
+	}	
+	
+	public void verifyTitle(String expectedTitle) {			
+		Assert.assertEquals(expectedTitle,InitializeDriver.driver.getTitle());
+	}	
+	
+	public void verifyCurrentURL(String expectedURL) {			
+		Assert.assertEquals(expectedURL,InitializeDriver.driver.getCurrentUrl());
+	}
+	
+	public void entertext(String xpath, String value) {
+		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));		
+		element.sendKeys(value);
+		log.info("Entered text : " + value + "on object" + xpath);
+	}
+	
+	public void click(String xpath) {
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));		
+		element.click();		
+		log.info("Clicked on object with xpath of : " + xpath);
+	}
+	
+	public void closeDriver() {
+		InitializeDriver.driver.close();
+		log.info("Closed the driver ");
+	}
+	
+	public void mouseHover(String xpath) {
+		WebElement svgObject = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+		Actions builder = new Actions(InitializeDriver.driver);
+		builder.moveToElement(svgObject).perform();
+		log.info("Hover on object with xpath of : " + xpath);
+	}
+	
+	public void clickByAction(String xpath) {
+		WebElement svgObject = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));		
+		Actions builder = new Actions(InitializeDriver.driver);		
+		builder.click(svgObject).build().perform();
+		log.info("Clicked on object using action class with xpath of : " + xpath);
+	}
+	
+	public void enterCharacters(String xpath, String value) {
+		String getTextCount = "//div[text()='130 character minimum -- Count: ']//span";		
+		for(int ctr=0;ctr<130;ctr++) {
+			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));		
+			element.sendKeys(value);	
+			log.info("Entered text : " + value);
+			String getRunTimeCount = getText(getTextCount);
+			int getRunCount=Integer.parseInt(getRunTimeCount); 
+			ctr = getRunCount;
+			log.info("counter variable value is " + ctr);
+			log.info("getRunCount variable value is " + getRunCount);
+		}
+	}
+	
+	public String getText(String xpath) {		
+		return InitializeDriver.driver.findElement(By.xpath(xpath)).getText();
+	}
+	
+	public void verify(String xpath, String expectedValue) {
+		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));	
+		Assert.assertEquals(expectedValue,InitializeDriver.driver.findElement(By.xpath(xpath)).getText());		
+	}
+	
+	public void isDisplayed(String xpath) {
+		boolean submitbuttonPresence=InitializeDriver.driver.findElement(By.xpath(xpath)).isDisplayed();
+		log.info("Object is displayed for an xpath : " + xpath + " is ----- " + submitbuttonPresence);
+	}
+	
+	public void scrollUp() {
+		 JavascriptExecutor javascexe = (JavascriptExecutor) InitializeDriver.driver;
+		 javascexe.executeScript("window.scrollBy(0,-350)", "");
+		 log.info("Scrolled up ");
+	}
+
+		
+	
+}

@@ -1,0 +1,54 @@
+package assignment;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+public class ReviewScenario {
+
+	public static void main(String[] args) {
+		InitializeDriver.initDriver();
+		CommonWebFun cwf = new CommonWebFun();
+		PageObjects po = new PageObjects();
+		
+		Logger log = LogManager.getLogger(ReviewScenario.class.getName());
+		
+		BasicConfigurator.configure();
+		
+		String baseURL = "https://jobs.economist.com/";		
+		cwf.launch(baseURL);
+				
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "primaryLogo"));
+		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "navBar"));
+		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "searchfields"));
+		
+//		cwf.mouseHover(po.readproperty("Objectrepo.properties", "starxpath"));
+//		
+//		cwf.clickByAction(po.readproperty("Objectrepo.properties", "starxpath"));
+//		
+//		cwf.click(po.readproperty("Objectrepo.properties", "dropdownxpath"));
+//		
+//		cwf.click(po.readproperty("Objectrepo.properties", "dropdownValue"));
+//		
+//		cwf.enterCharacters(po.readproperty("Objectrepo.properties", "reviewComment"),reviewText);
+//		
+//		cwf.click(po.readproperty("Objectrepo.properties", "submitBTN"));
+//		
+//		cwf.verify(po.readproperty("Objectrepo.properties", "reviewerLabl"), "@kratika_manit");
+//		
+//		cwf.verify(po.readproperty("Objectrepo.properties", "reviewerLabl"), "@kratika_manit");
+//		
+//		cwf.scrollUp();
+//		
+//		cwf.mouseHover(po.readproperty("Objectrepo.properties", "authorLabl"));
+//		
+//		cwf.click(po.readproperty("Objectrepo.properties", "profileLabl"));
+//		
+//		cwf.verify(po.readproperty("Objectrepo.properties", "authorReccmLabl"), "Kratika Singh's Recommendations");		
+		
+		cwf.closeDriver();
+	}
+
+}

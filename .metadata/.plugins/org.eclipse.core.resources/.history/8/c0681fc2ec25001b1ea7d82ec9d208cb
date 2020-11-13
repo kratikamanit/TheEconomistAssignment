@@ -1,0 +1,216 @@
+package assignment;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+public class ScenariosFunc {
+	
+	CommonWebFun cwf = new CommonWebFun();
+	PageObjects po = new PageObjects();
+	
+	Logger log = LogManager.getLogger(DriverScript.class.getName());
+	
+	public void pageLoadVerification() {
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "primary_logo"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "nav_bar"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "search_fields_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sector_lists_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "jobs_blog_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "featured_jobs_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "footer_section"));
+		log.info(" *************************************************************************** ");
+		log.info(" *************************************************************************** ");
+		log.info(" The Economist | Jobs page is loading successfully with all the components ");
+		log.info(" *************************************************************************** ");
+		log.info(" *************************************************************************** ");
+		
+	}
+	
+	public void validateSignInCreateAccount() {
+		// Validation of Sign In link		
+		cwf.click(po.readproperty("Objectrepo.properties", "sign_in_link"));
+		cwf.verifyTitle("Logon | Jobs.Economist.com");
+		cwf.verifyCurrentURL("https://jobs.economist.com/logon/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_label"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_button"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_createacc_label"));
+		log.info(" ***************************************** ");
+		log.info(" Successfully Navigated to Sign in Page ");
+		log.info(" ***************************************** ");
+		cwf.click(po.readproperty("Objectrepo.properties", "home_tab"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "search_fields_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sector_lists_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "jobs_blog_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "featured_jobs_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "footer_section"));
+		log.info(" ***************************************** ");
+		log.info(" Successfully Navigated back to Home Page ");
+		log.info(" ***************************************** ");
+		
+		// Validation of Create Account link
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "create_acc_link"));
+		cwf.verifyTitle("Register | Jobs.Economist.com");
+		cwf.verifyCurrentURL("https://jobs.economist.com/register/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_label"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_button"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sign_in_page_createacc_label"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "create_acc_page_block"));
+		log.info(" ********************************************* ");
+		log.info(" Successfully Navigated to Create Account Page ");
+		log.info(" ********************************************* ");
+		cwf.click(po.readproperty("Objectrepo.properties", "home_tab"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "search_fields_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sector_lists_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "jobs_blog_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "featured_jobs_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "footer_section"));
+		log.info(" ***************************************** ");
+		log.info(" Successfully Navigated back to Home Page ");
+		log.info(" ***************************************** ");
+	}
+
+	public void navBarValidation() {
+		cwf.click(po.readproperty("Objectrepo.properties", "find_job_tab"));
+		cwf.verifyTitle("Browse jobs | Jobs.Economist.com");
+		cwf.verifyCurrentURL("https://jobs.economist.com/jobs/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "find_job_page_label"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "find_job_page_browse_label"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "find_job_page_search_label"));
+		log.info(" ***************************************** ");
+		log.info(" Successfully Navigated to Job search Page ");
+		log.info(" ***************************************** ");
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "job_alerts_tab"));
+		cwf.verifyTitle("New Job By Email | Jobs.Economist.com");
+		cwf.verifyCurrentURL("https://jobs.economist.com/newalert/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "job_alerts_page_label"));
+		log.info(" ***************************************** ");
+		log.info(" Successfully Navigated to Job Alerts Page ");
+		log.info(" ***************************************** ");
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "search_recruiters_tab"));
+		cwf.verifyTitle("Recruiters on Jobs.Economist.com");
+		cwf.verifyCurrentURL("https://jobs.economist.com/employers/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "search_recruiters_page_label"));
+		log.info(" ************************************************ ");
+		log.info(" Successfully Navigated to Search Recruiters Page ");
+		log.info(" ************************************************ ");
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "jobs_blog_tab"));
+		cwf.verifyTitle("Articles and careers information on Jobs.Economist.com");
+		cwf.verifyCurrentURL("https://jobs.economist.com/careers/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "jobs_blog_page_label"));
+		log.info(" **************************************** ");
+		log.info(" Successfully Navigated to Jobs Blog Page ");
+		log.info(" **************************************** ");	
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "home_tab"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "search_fields_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "sector_lists_section"));		
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "jobs_blog_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "featured_jobs_section"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "footer_section"));
+		log.info(" ***************************************** ");
+		log.info(" Successfully Navigated back to Home Page ");
+		log.info(" ***************************************** ");
+	}
+
+	public void jobsBySectorValidation() {
+		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Banking and finance");
+		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Business services");
+		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "IT and telecoms");
+		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Government");
+		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Primary and utility");
+		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Media");
+		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Charity");
+		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Consultancy");
+		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Health");
+		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Other");
+		
+//		APPLY BUTTON IS NOT AVAILABLE for few of jobs link to these sector		
+//		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Academia");  
+//		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "International public sector");   
+//		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "NGO");      	
+//		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Development");	
+//		cwf.selectJobSector(po.readproperty("Objectrepo.properties", "jobs_bysector"), "Humanitarian");
+	}
+
+	public void	jobSearchValidation() {
+		cwf.entertext(po.readproperty("Objectrepo.properties", "keywords_search_field"), "Director");
+		cwf.entertext(po.readproperty("Objectrepo.properties", "location_search_field"), "INDIA");
+		cwf.selectFromDropDown(po.readproperty("Objectrepo.properties", "location_search_dropdwn"), "0");
+		cwf.click(po.readproperty("Objectrepo.properties", "search_button"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "search_msg_label"));
+		log.info("Search result message is being displayed as : " + cwf.getText(po.readproperty("Objectrepo.properties", "search_msg_label")));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "requested_search_job_label"));
+		log.info("Requested Search result message is being displayed as : " + cwf.getText(po.readproperty("Objectrepo.properties", "requested_search_job_label")));
+	}
+
+	public void footerlinksValidation() {
+		cwf.click(po.readproperty("Objectrepo.properties", "about_us_link"));
+		cwf.verifyTitle("The Economist jobs board | About Us");
+		cwf.verifyCurrentURL("https://jobs.economist.com/about-us/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "about_us_page_label"));
+		log.info(" **************************************** ");
+		log.info(" Successfully Navigated to About Us Page ");
+		log.info(" **************************************** ");	
+		cwf.click(po.readproperty("Objectrepo.properties", "home_tab"));
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "contact_us_link"));
+		cwf.verifyTitle("Jobs.Economist.com | Contact Us");
+		cwf.verifyCurrentURL("https://jobs.economist.com/contact-us/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "contact_us_page_label"));
+		log.info(" **************************************** ");
+		log.info(" Successfully Navigated to Contact Us Page ");
+		log.info(" **************************************** ");	
+		cwf.click(po.readproperty("Objectrepo.properties", "home_tab"));
+
+		cwf.click(po.readproperty("Objectrepo.properties", "term_cond_link"));
+		cwf.verifyTitle("Jobs.Economist.com | Terms & Conditions");
+		cwf.verifyCurrentURL("https://jobs.economist.com/terms-and-conditions/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "term_cond_page_label"));
+		log.info(" **************************************** ");
+		log.info(" Successfully Navigated to Terms & Conditions Page ");
+		log.info(" **************************************** ");	
+		cwf.click(po.readproperty("Objectrepo.properties", "home_tab"));
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "priv_pol_link"));
+		cwf.verifyTitle("Jobs.Economist.com | Privacy Policy");
+		cwf.verifyCurrentURL("https://jobs.economist.com/privacy-policy/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "priv_pol_page_label"));
+		log.info(" **************************************** ");
+		log.info(" Successfully Navigated to Privacy Policy Page ");
+		log.info(" **************************************** ");	
+		cwf.click(po.readproperty("Objectrepo.properties", "home_tab"));
+		
+		cwf.click(po.readproperty("Objectrepo.properties", "advert_link"));
+		cwf.verifyTitle("Jobs.Economist.com | Recruiter Services");
+		cwf.verifyCurrentURL("https://recruiters.jobs.economist.com/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "advert_page_label"));
+		log.info(" **************************************** ");
+		log.info(" Successfully Navigated to Advertise with us Page ");
+		log.info(" **************************************** ");	
+	}
+
+	public void validateCreateAccount(String fname, String lname, String email, String pwd) {
+		cwf.click(po.readproperty("Objectrepo.properties", "create_acc_link"));
+		cwf.verifyTitle("Register | Jobs.Economist.com");
+		cwf.verifyCurrentURL("https://jobs.economist.com/register/");
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "create_acc_page_block"));
+		log.info(" ********************************************* ");
+		log.info(" Successfully Navigated to Create Account Page ");
+		log.info(" ********************************************* ");
+		cwf.entertext(po.readproperty("Objectrepo.properties", "firstname_input"), fname);
+		cwf.entertext(po.readproperty("Objectrepo.properties", "lastname_input"), lname);
+		cwf.entertext(po.readproperty("Objectrepo.properties", "emailaddress_input"), email);
+		cwf.entertext(po.readproperty("Objectrepo.properties", "pwd_input"), pwd);
+		cwf.entertext(po.readproperty("Objectrepo.properties", "confirm_pwd_input"), pwd);
+		cwf.click(po.readproperty("Objectrepo.properties", "agreeTermsAndConds_input"));
+		cwf.click(po.readproperty("Objectrepo.properties", "create_acc_button"));
+		cwf.isDisplayed(po.readproperty("Objectrepo.properties", "acc_created_label"));
+		log.info("Confirmation message for account creation is being displayed as : " + cwf.getText(po.readproperty("Objectrepo.properties", "confirm_msg_label")));
+		
+	}
+}
+
